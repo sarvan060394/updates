@@ -103,4 +103,7 @@ kafka_thread.start()
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
 -----------------------------------------------------
+This setup ensures that:
 
+The producer application, running as a single replica, sends events to the Kafka topic whenever the backing service is online.
+The consumer application, running as 5 replicas, listens for events on the Kafka topic and restarts itself upon receiving an event. Each replica restarts independently, ensuring the desired behavior without needing external authentication.
